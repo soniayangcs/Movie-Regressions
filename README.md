@@ -11,6 +11,12 @@ Project 3: Movie regression modesls to predict the effects of different attribut
 ##Data Source:
 * [Kaggle DataSet](https://www.kaggle.com/tmdb/tmdb-movie-metadata#tmdb_5000_movies.csv/) - Movie
 
+##Story
+
+
+```
+Input story text here.
+```
 
 ## Possible Predictive models:
 How does Revenue correlate
