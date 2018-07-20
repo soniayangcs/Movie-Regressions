@@ -22,8 +22,8 @@ Input story text here.
 How does Revenue correlate
 How does Rating correlate
 
-###INPUTS: (Red items are omitted)
-
+##INPUTS: (Red items are omitted)
+```
 budget
 genres
 homepage
@@ -44,3 +44,4 @@ tagline
 title
 vote_average
 Vote_count
+```
