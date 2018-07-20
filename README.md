@@ -1,7 +1,7 @@
 # Project-3.-Movie-Regressions
 Project 3: Movie regression modesls to predict the effects of different attributes on box performances and verification that descriptor can be used as a predictor of movie performance.
 
-##Members
+## Members
 * Chris 
 * Sue
 * Helen
@@ -11,7 +11,7 @@ Project 3: Movie regression modesls to predict the effects of different attribut
 ##Data Source:
 * [Kaggle DataSet](https://www.kaggle.com/tmdb/tmdb-movie-metadata#tmdb_5000_movies.csv/) - Movie
 
-##Story
+## Story
 
 
 ```
@@ -19,10 +19,13 @@ Input story text here.
 ```
 
 ## Possible Predictive models:
+```
 How does Revenue correlate
 How does Rating correlate
+```
 
-##INPUTS: (Red items are omitted)
+## INPUTS: (Red items are omitted)
+
 ```
 budget
 genres
