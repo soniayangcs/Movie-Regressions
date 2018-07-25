@@ -48,3 +48,6 @@ title
 vote_average
 Vote_count
 ```
+
+## VISUALIZATIONS
+* tableau: https://public.tableau.com/profile/sonia.yang#!/vizhome/MovieData_37/PopularitybyMonth?publish=yes
