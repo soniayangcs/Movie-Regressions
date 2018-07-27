@@ -50,4 +50,4 @@ Vote_count
 ```
 
 ## VISUALIZATIONS
-* tableau: https://public.tableau.com/profile/sonia.yang#!/vizhome/MovieData_37/PopularitybyMonth?publish=yes
+* tableau: https://public.tableau.com/profile/sonia.yang#!/vizhome/MovieData_37/Dashboard1?publish=yes
