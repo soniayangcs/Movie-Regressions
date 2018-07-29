@@ -7,8 +7,9 @@ nltk.download('stopwords')
 from nltk.corpus import stopwords
 import re
 from sklearn.feature_extraction.text import TfidfVectorizer
+from sklearn.metrics import mean_squared_error
 
-REPLACE_BY_SPACE_REREPLACE_  = re.compile('[/(){}\[\]\|@,;]"')
+REPLACE_BY_SPACE_RE = re.compile('[/(){}\[\]\|@,;]"')
 BAD_SYMBOLS_RE = re.compile('[^0-9a-z #+_]')
 STOPWORDS = set(stopwords.words('english'))
 
@@ -33,16 +34,17 @@ def upload_file():
     if request.method == 'POST':
         testword = request.form["wordName"]
         cleanword = text_prepare(testword)
-        vec = TfidfVectorizer()
-        vec.fit(list(cleanword))
-        transformed = vec.transform(list(cleanword))
+        transformed = vec.transform([cleanword])
         text_features = pd.DataFrame(transformed.todense())
         text_features.columns = vec.get_feature_names()
-        prediction = clf.predict(testword)
-        return jsonify({'prediction': list(testword)})
-    
+        prediction = clf.predict(text_features.values).tolist()
+        #return jsonify({'prediction': list(prediction)})
+        return render_template("results.html", prediction=prediction) 
+
     return render_template('form.html')
      
 if __name__ == '__main__':
+     # Load your vectorizer
+     vec = joblib.load("vectorizer.pkl")
      clf = joblib.load('model.pkl')
      app.run()
