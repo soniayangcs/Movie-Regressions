@@ -30,7 +30,7 @@ def text_prepare(text):
 
 app = Flask(__name__)
 
-
+#chris add
 @app.route("/")
 
 def main():
