@@ -30,6 +30,16 @@ def text_prepare(text):
 
 app = Flask(__name__)
 
+
+@app.route("/")
+
+def main():
+    return render_template('index2.html')
+if __name__ == "__main__":
+    app.debug = True
+    app.run()
+
+
 @app.route('/predict', methods=['GET','POST'])
 def upload_file():
     if request.method == 'POST':
