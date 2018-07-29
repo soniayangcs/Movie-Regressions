@@ -1,6 +1,7 @@
 from flask import Flask, jsonify, render_template, request, redirect
 from sklearn.externals import joblib
 import pandas as pd
+import numpy as np
 #Remove stop words
 import nltk
 nltk.download('stopwords')
@@ -38,8 +39,8 @@ def upload_file():
         text_features = pd.DataFrame(transformed.todense())
         text_features.columns = vec.get_feature_names()
         prediction = clf.predict(text_features.values).tolist()
-        #return jsonify({'prediction': list(prediction)})
-        return render_template("results.html", prediction=prediction) 
+        #return jsonify({'prediction': list(prediction); 'overview': list(testword)})
+        return render_template("results.html", prediction="$"+str(int(prediction[0])), overview=testword) 
 
     return render_template('form.html')
      
