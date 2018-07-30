@@ -64,15 +64,14 @@ h3 {
 }
 
 h4 {
-  font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
-  font-weight: 300;
-  text-align: center;
+  background-color: black;
+  color:rgb(221, 85, 12);
 }
 
 h5 {
-  font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
-  font-weight: 300;
-  text-align: center;
+  /*background-color: black;
+  color:rgb(221, 85, 12);*/
+  
 }
 
 .box {
@@ -216,3 +215,4 @@ hr {
   border-style: inset;
   border-width: 5px;
 }
+
