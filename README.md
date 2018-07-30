@@ -49,5 +49,7 @@ vote_average
 Vote_count
 ```
 
+* note: popularity score is calculated based on several factors, such as number of votes, views, users who marked the movie as favorite and/or added is to their watchlist, etc. -> https://developers.themoviedb.org/3/getting-started/popularity
+
 ## VISUALIZATIONS
 * tableau: https://public.tableau.com/profile/sonia.yang#!/vizhome/MovieData_37/Dashboard1 
