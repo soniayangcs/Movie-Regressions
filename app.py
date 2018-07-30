@@ -6,6 +6,7 @@ import numpy as np
 import nltk
 nltk.download('stopwords')
 from nltk.corpus import stopwords
+import json
 import re
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics import mean_squared_error
@@ -38,8 +39,32 @@ def text_prepare(text):
     
     return text
 
+def get_models():
+    """Generate a library of base learners."""
+    nb = GaussianNB()
+    svc = SVC(C=100, probability=True)
+    knn = KNeighborsClassifier(n_neighbors=3)
+    lr = LogisticRegression(C=100, random_state=0)
+    nn = MLPClassifier((80, 10), early_stopping=False, random_state=0)
+    gb = GradientBoostingClassifier(n_estimators=100, random_state=0)
+    rf = RandomForestClassifier(n_estimators=10, max_features=3, random_state=0)
+
+    models = {'svm': svc,
+              'knn': knn,
+              'naive bayes': nb,
+              'mlp-nn': nn,
+              'random forest': rf,
+              'gbm': gb,
+              'logistic': lr,
+              }
+
+    return models
+
+
 def train_predict(model_list):
     """Fit models in list on training set and return preds"""
+
+
     print("Fitting models.")
     model_results = {}
     for i, (name, m) in enumerate(get_models().items()):
@@ -113,6 +138,12 @@ def pensemble():
         genre = request.form["genre"]
         month = request.form["month"]
         df[month]=[1]
+        df["popularity"] = [int(popularity)]
+        df["vote_count"] = [int(vote_count)]
+        if genre == "Other_genre":
+            df['Western_genre'] = [0]
+        else:
+            df[genre]=[1]
         #cleanword = text_prepare(testword)
         #transformed = vec.transform([cleanword])
         #transformedp = vecp.transform([cleanword])
@@ -122,8 +153,8 @@ def pensemble():
         #text_featuresp.columns = vecp.get_feature_names()
         #prediction = clf.predict(text_features.values).tolist()
         #predictionp = clfp.predict(text_featuresp.values).tolist()
-        return jsonify([{'popularity':list(popularity), 'vote':list(vote_count), 'genre':genre, 'month':month}])
-        #return jsonify(df)
+        #return jsonify([{'popularity':list(popularity), 'vote':list(vote_count), 'genre':genre, 'month':month}])
+        return jsonify(json.dumps(json.loads(df.to_json(orient='records'))))
         #return render_template("results.html", prediction="$"+str(int(prediction[0])),popularity=predictionp[0],overview=testword) 
 
     return render_template('ensembleform.html')
@@ -135,4 +166,4 @@ if __name__ == '__main__':
      clf = joblib.load("NLP_model_revenue.pkl")
      clfp = joblib.load("NLP_model_popularity.pkl")
      clfe = joblib.load("ensemble_model.pkl")
-     app.run()
+     app.run(debug=True)
