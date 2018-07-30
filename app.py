@@ -144,9 +144,28 @@ def pensemble():
             df['Western_genre'] = [0]
         else:
             df[genre]=[1]
-        predictione = clfe.predict(df.values).tolist()
+        cdf = df[[ 'popularity', 'Crime_genre', 'vote_count',
+       'Western_genre', 'Adventure_genre', 
+       'Science Fiction_genre','Dec_releaseMon',
+       'May_releaseMon', 'Oct_releaseMon',
+       'Jul_releaseMon', 'Mar_releaseMon', 'Nov_releaseMon', 'Apr_releaseMon',
+       'Jun_releaseMon', 'Feb_releaseMon', 'Aug_releaseMon', 'Sep_releaseMon',
+       'Jan_releaseMon']]
+        model_results = {}
+        model_results['svc'] = svc.predict(cdf)
+        model_results['nb'] = nb.predict(cdf)
+        model_results['lr'] = lr.predict(cdf)
+        model_results['nn'] = nn.predict(cdf)
+        model_results['gb'] = gb.predict(cdf)
+        model_results['rf'] = rf.predict(cdf)
+        model_results['knn'] = knn.predict(cdf)
+        D = pd.DataFrame(model_results)
+        ensemble = enlr.predict(D)
+        P = D
+        P['enlr'] = ensemble
+        return jsonify(json.dumps(json.loads(P.to_json(orient='records'))))
         #return jsonify(json.dumps(json.loads(df.to_json(orient='records'))))
-        return render_template("ensembleresult.html", popularity=popularity,vote_count=vote_count, genre=genre,month=month) 
+        #return render_template("ensembleresult.html", popularity=popularity,vote_count=vote_count, genre=genre,month=month) 
 
     return render_template('ensembleform.html')
      
@@ -156,5 +175,12 @@ if __name__ == '__main__':
      vecp = joblib.load("NLP_vectorizer_popularity.pkl")
      clf = joblib.load("NLP_model_revenue.pkl")
      clfp = joblib.load("NLP_model_popularity.pkl")
-     clfe = joblib.load("ensemble_model.pkl")
+     svc = joblib.load("1svc_model.pkl")
+     nb = joblib.load("2nb_model.pkl")
+     knn = joblib.load("3knn_model.pkl")
+     lr = joblib.load("4lr_model.pkl")
+     nn = joblib.load("5nn_model.pkl")
+     gb = joblib.load("6gb_model.pkl")
+     rf = joblib.load("7rf_model.pkl")
+     enlr = joblib.load("8enlr_model.pkl")
      app.run(debug=True)
