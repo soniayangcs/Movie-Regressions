@@ -163,9 +163,12 @@ def pensemble():
         ensemble = enlr.predict(D)
         P = D
         P['enlr'] = ensemble
-        return jsonify(json.dumps(json.loads(P.to_json(orient='records'))))
+        #return jsonify(json.dumps(json.loads(P.to_json(orient='records'))))
         #return jsonify(json.dumps(json.loads(df.to_json(orient='records'))))
-        #return render_template("ensembleresult.html", popularity=popularity,vote_count=vote_count, genre=genre,month=month) 
+        return render_template("ensembleresult.html", 
+        popularity=popularity,vote_count=vote_count, genre=genre,month=month,
+        svc=P['svc'][0],nb=P['nb'][0],lr=P['lr'][0],nn=P['nn'][0],gb=P['gb'][0],
+        rf=P['rf'][0],knn=P['knn'][0], enlr=P['enlr'][0])
 
     return render_template('ensembleform.html')
      
