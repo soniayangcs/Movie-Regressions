@@ -40,8 +40,26 @@ if __name__ == "__main__":
     app.run()
 
 
-@app.route('/predict', methods=['GET','POST'])
-def upload_file():
+@app.route('/predict_overview', methods=['GET','POST'])
+def predict_overview():
+    if request.method == 'POST':
+        testword = request.form["wordName"]
+        cleanword = text_prepare(testword)
+        transformed = vec.transform([cleanword])
+        transformedp = vecp.transform([cleanword])
+        text_features = pd.DataFrame(transformed.todense())
+        text_featuresp = pd.DataFrame(transformedp.todense())
+        text_features.columns = vec.get_feature_names()
+        text_featuresp.columns = vecp.get_feature_names()
+        prediction = clf.predict(text_features.values).tolist()
+        predictionp = clfp.predict(text_featuresp.values).tolist()
+        #return jsonify({'prediction': list(prediction); 'overview': list(testword)})
+        return render_template("results.html", prediction="$"+str(int(prediction[0])),popularity=predictionp[0],overview=testword) 
+
+    return render_template('form.html')
+
+@app.route('/predict_ensembles', methods=['GET','POST'])
+def predict_ensembles():
     if request.method == 'POST':
         testword = request.form["wordName"]
         cleanword = text_prepare(testword)
@@ -60,9 +78,9 @@ def upload_file():
      
 if __name__ == '__main__':
      # Load your vectorizer
-     vec = joblib.load("vectorizer.pkl")
-     vecp = joblib.load("vectorizer_popularity.pkl")
-     clf = joblib.load("model.pkl")
-     clfp = joblib.load("model_popularity.pkl")
+     vec = joblib.load("NLP_vectorizer_revenue.pkl")
+     vecp = joblib.load("NLP_vectorizer_popularity.pkl")
+     clf = joblib.load("NLP_model_revenue.pkl")
+     clfp = joblib.load("NLP_model_popularity.pkl")
      
      app.run()
