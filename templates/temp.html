@@ -1,18 +1,30 @@
-<!DOCTYPE html>
-
 <!--START!!^^^^^^^^^^^^^^^^^^^^^^^^IN TEMPLATE^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^-->
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8"><meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge"> 
-  <title>Temperature</title>
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-  <link rel="stylesheet" href="style.css">
-</head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge"> 
+    <title>Movie Metadata and predictions</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+        crossorigin="anonymous">
+    <link rel="stylesheet" href="/static/style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
+
+ <!--D3 cdn-->
+ <script src='https://cdnjs.cloudflare.com/ajax/libs/d3/4.13.0/d3.min.js'></script>
+ <script src='https://d3js.org/d3.v4.min.js'></script>
+ <script src='/static/d3pie.min.js'></script>
+
+
+
+  </head>
 
 <body>
+     <!-- Navigation -->
     <nav class="navbar navbar-default">
              <div class="container-fluid">
                <div class="navbar-header">
@@ -22,51 +34,58 @@
                    <span class="icon-bar"></span>
                    <span class="icon-bar"></span>
                  </button>
-                 <a class="navbar-brand" href="index.html">How Changes in Latitudes Affect Changes in ...</a>
+                 <a class="navbar-brand" href="index.html">BLOCKBUSTER or FLOP!!!  ...</a>
                </div>
                <div class="collapse navbar-collapse" id="#neatNavbar">
                 <ul class="nav navbar-nav navbar-left">
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Plots
-                                <span class="caret"></span>
-                            </a>
-                            <ul class="dropdown-menu">
-                                <li>
-                                    <a href="temp.html">Temperature</a>
-                                </li>
-                                <li>
-                                    <a href="humid.html">Humidity</a>
-                                </li>
-                                <li>
-                                    <a href="clouds.html">Cloudiness</a>
-                                </li>
-                                <li>
-                                    <a href="wind.html">Wind Speed</a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li>
-                            <a href="comparison.html">Comparison</a>
-                        </li>
-                        <li>
-                            <a href="data.html">Data</a>
-                        </li>
-                    </ul>
-                </div>
-    
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Plots
+                            <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="temp.html">DATA DASHBOARD 1</a>
+                            </li>
+                            <li>
+                                <a href="humid.html">DATA DASHBOARD 2</a>
+                            </li>
+                            <li>
+                                <a href="clouds.html">NATURAL LANGUAGE PROCESSING</a>
+                            </li>
+                            <li>
+                                <a href="wind.html">RANDOM FOREST EVALUATION</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="comparison.html">RESULTS</a>
+                    </li>
+                    <li>
+                        <a href="data.html">CONCLUSION</a>
+                    </li>
+                </ul>
             </div>
-            <div class="container">
-                <div class="col-md-12">
-                    <div class="sigline">
-                        <p>
-                            Christopher Newbolt | Data Analytics & Visualization 
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </nav>
 
-        <!--END!!^^^^^^^^^^^^^^^^^^^^^^^^TEMPLATE aBOVE^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^-->
+        </div>
+        <div class="container">
+            <div class="col-md-12">
+                <div class="sigline">
+                    <p>
+                      USC DATA ANALYTICS BOOTCAMP| 
+                      TEAM: FANTASTIC 5 
+                      
+                      <br> </br> 
+              MEMBERS: <a href="HTTP://ESPN.COM">CHRIS,</a> 
+                      <a href="HTTP://ESPN.COM">SUE HELEN,</a>  
+                      <a href="HTTP://ESPN.COM">NANA, </a> 
+                      <a href="HTTP://ESPN.COM">SONIA, </a> 
+                      <a href="HTTP://ESPN.COM">LINDSAY</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </nav>
+<!--END!!^^^^^^^^^^^^^^^^^^^^^^^^IN TEMPLATE^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^-->
         
         <!-- ADD INPUT IN THIS SECTION-->
         
