@@ -53,6 +53,9 @@ Vote_count
 
 ## VISUALIZATIONS
 
-Tableau: https://public.tableau.com/profile/sonia.yang#!/vizhome/MovieData_37/Dashboard1
+Tableau: 
 * this visualization was created based off the cleaned CSV data only to see if there are any correlations or trends before using machine learning
 * a 'pre-story' of sorts to see if our predictions match up and have similar trends or differ
+* graphs examining budget, popularity, and time of the year vs. gross revenue: https://public.tableau.com/profile/sonia.yang#!/vizhome/MovieData_37/FactorsAffectingRevenue
+* graphs examining popularity vs. vote average, and also movie genres ranked from most to least common: https://public.tableau.com/profile/sonia.yang#!/vizhome/MovieData_37/VoteAverageSummary
+* graphs showing the top grossing films for the four most common movie genres (drama, comedy, thriller, action): https://public.tableau.com/profile/sonia.yang#!/vizhome/MovieData_37/TopByGenre
