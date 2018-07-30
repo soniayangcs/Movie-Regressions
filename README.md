@@ -1,5 +1,5 @@
 # Project-3.-Movie-Regressions
-Project 3: Movie regression modesls to predict the effects of different attributes on box performances and verification that descriptor can be used as a predictor of movie performance.
+Project 3: Movie regression models to predict the effects of different attributes on box performances and verification that descriptor can be used as a predictor of movie performance.
 
 ## Members
 * Chris 
@@ -8,7 +8,7 @@ Project 3: Movie regression modesls to predict the effects of different attribut
 * Nana
 * Sonia
 
-##Data Source:
+## Data Source:
 * [Kaggle DataSet](https://www.kaggle.com/tmdb/tmdb-movie-metadata#tmdb_5000_movies.csv/) - Movie
 
 ## Story
@@ -52,4 +52,7 @@ Vote_count
 * note: popularity score is calculated based on several factors, such as number of votes, views, users who marked the movie as favorite and/or added is to their watchlist, etc. -> https://developers.themoviedb.org/3/getting-started/popularity
 
 ## VISUALIZATIONS
-* tableau: https://public.tableau.com/profile/sonia.yang#!/vizhome/MovieData_37/Dashboard1 
+
+Tableau: https://public.tableau.com/profile/sonia.yang#!/vizhome/MovieData_37/Dashboard1
+* this visualization was created based off the cleaned CSV data only to see if there are any correlations or trends before using machine learning
+* a 'pre-story' of sorts to see if our predictions match up and have similar trends or differ
