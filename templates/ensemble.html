@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+
+<!--START!!^^^^^^^^^^^^^^^^^^^^^^^^IN TEMPLATE^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^-->
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8"><meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge"> 
+  <title>Temperature</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <nav class="navbar navbar-default">
+             <div class="container-fluid">
+               <div class="navbar-header">
+                 <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#neatNavbar" aria-expanded="false">
+                   <span class="sr-only">Toggle navigation</span>
+                   <span class="icon-bar"></span>
+                   <span class="icon-bar"></span>
+                   <span class="icon-bar"></span>
+                 </button>
+                 <a class="navbar-brand" href="index.html">How Changes in Latitudes Affect Changes in ...</a>
+               </div>
+               <div class="collapse navbar-collapse" id="#neatNavbar">
+                <ul class="nav navbar-nav navbar-left">
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Plots
+                                <span class="caret"></span>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <a href="temp.html">Temperature</a>
+                                </li>
+                                <li>
+                                    <a href="humid.html">Humidity</a>
+                                </li>
+                                <li>
+                                    <a href="clouds.html">Cloudiness</a>
+                                </li>
+                                <li>
+                                    <a href="wind.html">Wind Speed</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="comparison.html">Comparison</a>
+                        </li>
+                        <li>
+                            <a href="data.html">Data</a>
+                        </li>
+                    </ul>
+                </div>
+    
+            </div>
+            <div class="container">
+                <div class="col-md-12">
+                    <div class="sigline">
+                        <p>
+                            Christopher Newbolt | Data Analytics & Visualization 
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+
+        
+            <div class="container">
+                <div class="row row-grid">
+                    
+                    <div class="col-md-8">
+                        <div class="box box-left">
+                        <section id="intro">
+                            <h1>Ensemble Model </h1>
+                            <hr>
+                            <figure>
+                            <img src="Logistic.png" alt="Logit Coef" width="500" height="500" class="center">
+                                            
+                            </figure>
+                            
+                            <section id="Variables Used">
+                             </br>
+                           </br>                         
+                           <p><b>Variables Used:</b>
+                           </br>
+                           </br>
+                           Before running the ensemble model, we used RFE (Recursive Feature Elimination) to do variable selection, then we ran a simple Logistic regression to see the performance on the Logit model with only selected variables, it turned out that all the variables that were selected using RFE has a P value less than 0.05, meaning the variables are signifant to the outcome varible. and the model has an R square of 36%. It seems like these variables have a good prediction power for the outcome variable. 
+                           </br>
+                           The Outcome variable is binary, 1 means the movie revene is above average USD$117,000,000 (Good), 0 means the movie revenue is below average (Bad). The reason why we are predicting a binary outcome instead of continous is because we found the variables does not describe the outcome variable well (Revenue of Movie). Then we decided to make the problem into a classification problem and the model showed better results than the linear regression model. Therefore we decided to change the model into a classification model
+
+                            </p>
+                            </section>
+                        
+                            
+                          </br>
+                          </br>
+                          <section id="Models used">
+                          <img src="ROC_curve.png" alt="ROC_curve" width="500" height="500" class="center">
+                           </br>
+                           </br>                    
+                           
+                           <p><b>Model Used For Ensemble:</b>
+                           </br>
+                           </br>
+                           Ensemble model is a Logistic Regression model running on top of a series models that were trained to predict the outcome variable. The Models that we used for the Ensemble model are:
+                           </br>
+                           </br>
+                           Support Vector Machine (SVM)
+                           </br>
+                           </br>
+                           K Nearest Neighbors (KNN)
+                           </br>
+                           </br>
+                           Naive Bayes (NB)
+                           </br>
+                           </br>
+                           Multilayer Perceptron Neural Network (MLPNN)
+                           </br>
+                           </br>
+                           Random Forest (RF)
+                           </br>
+                           </br>
+                           Gradient Boosting (GBM)
+                           </br>
+                           </br>
+                           Logistic Regression (LR)
+                           </br>
+                           </br>
+                           After plotting out the ROC curve for all Models including Ensemble, it is clear that the ensemble model is much better than all the other models that were trained. The Esemble model has a ROC of 83%, whereas all the other models have ROC around 70% 
+                           </p>
+
+                          <section id="F1 Score">                  
+                           
+                           <p><b>F1 Scores:</b>
+                           </br>
+                           </br>
+                           Ensemble model also has the highest F1 Score compare to each individual models at 82%, individually GBM is the best performer at 81%, NB is the worst at 73%. The scores here are for the test dataset.
+                           </br>
+                           </br>
+                           Ensemble 
+                           </br>
+                           </br>
+                           <img src="Ensemble.png" alt="Ensemble" width="500" height="150" class="center">
+                           </br>
+                           </br>
+                           Support Vector Machine (SVM)
+                           </br>
+                           </br>
+                           <img src="SVM.png" alt="SVM" width="500" height="150" class="center">
+                           </br>
+                           </br>
+                           K Nearest Neighbors (KNN)
+                           </br>
+                           </br>
+                           <img src="KNN.png" alt="KNN" width="500" height="150" class="center">
+                           </br>
+                           </br>
+                           Naive Bayes (NB)
+                           </br>
+                           </br>
+                           <img src="NB.png" alt="NB" width="500" height="150" class="center">
+                           </br>
+                           </br>
+                           Multilayer Perceptron Neural Network (MLPNN)
+                           </br>
+                           </br>
+                           <img src="MLPNN.png" alt="MLPNN" width="500" height="150" class="center">
+                           </br>
+                           </br>
+                           Random Forest (RF)
+                           </br>
+                           </br>
+                           <img src="RF.png" alt="RF" width="500" height="150" class="center">
+                           </br>
+                           </br>
+                           Gradient Boosting (GBM)
+                           </br>
+                           </br>
+                           <img src="GBM.png" alt="GBM" width="500" height="150" class="center">
+                           </br>
+                           </br>
+                           Logistic Regression (LR)
+                           </br>
+                           </br>
+                           <img src="LR.png" alt="LR" width="500" height="150" class="center">
+                           </br>
+                           </br>
+                         
+                           </p>
+
+
+
+
+
+
+
+
+
+
+        
+                        </section>
+                        </div>
+                    </div>
+                    
+          <!-- DO NOT CHANGE HTML BELOW THIS POINT-->                          
+<!--###############################TEMPLATE BELOW##############################-->
+            <div class="col-md-4">
+                <div class="box box-right">
+                    <h2>Links</h2>
+                    <hr>
+
+                    <div class="row">
+                        <div class="col-xs-6 col-sm-3 col-md-6">
+                            <figure>
+                                <a href="temp.html">
+                               <!--     <img id="landing-viz" src="Temp_Latitude.png" alt="Latitude vs. Temperature">-->
+                                  <iframe src="https://giphy.com/embed/KZd26L2o8QXtK" width="85" height="50" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/applause-joker-KZd26L2o8QXtK">Random Forest -Regression</a></p>
+                                </a>
+                            </figure>
+                        </div>
+
+                        <div class="col-xs-6 col-sm-3 col-md-6">
+                            <figure>
+                                <a href="humid.html">
+                                <!--    <img id="landing-viz" src="Humidity_Latitude.png" alt="Random Forest - Classifier"> -->
+                                  <iframe src="https://giphy.com/embed/KZd26L2o8QXtK" width="85" height="50" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/applause-joker-KZd26L2o8QXtK">Random Forest - Classifier</a></p>
+                                </a>
+                            </figure>
+                        </div>
+
+                        <div class="col-xs-6 col-sm-3 col-md-6">
+                            <figure>
+                                <a href="clouds.html">
+                                 <!--   <img id="landing-viz" src="Cloudiness_Latitude.png" alt="Data Probing Plots"> -->
+                                  <iframe src="https://giphy.com/embed/KZd26L2o8QXtK" width="85" height="50" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/applause-joker-KZd26L2o8QXtK">Data Probing Plots</a></p>
+                                </a>
+                            </figure>
+                        </div>
+
+                        <div class="col-xs-6 col-sm-3 col-md-6">
+                            <figure>
+                                <a href="wind.html">
+                              <!--      <img id="landing-viz" src="Wind_Speed_Latitude.png" alt="Natural Language Processing"> -->
+                                  <iframe src="https://giphy.com/embed/KZd26L2o8QXtK" width="85" height="50" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/applause-joker-KZd26L2o8QXtK">Natural Language Processing</a></p>
+                                </a>
+                            </figure>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+        <!-- Info Boxes -->
+
+        <div class"container-fluid padding">
+            <div class="row padding">
+                <div class="col-md-3">
+                    <div class="card">
+                        <img class="card-img-top" src="/static/img/sue.jfif">
+                        <div class="card-body">
+                            <h4 class="card-title"></h4> Sue Helen</h4>
+                            <br></br>
+                            <p class="card-text">BLAH BLAH BLAH BLAH BLAH</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="card">
+                      <!--  <img class="card-img-top" src="/static/img/bolt.jpeg">-->
+                      <a href='https://photos.google.com/share/AF1QipP8Lpvs8RGWVPmL4qBiOfsWFjVkKyfcKS2D1BvlExjHBBpGfqHZQhGOtlPgkR8FCg?key=eXpXMFJ1V1htTmR2YnVlNzFfZTlfcDJlQ3JEOW13&source=ctrlq.org'><img src='https://lh3.googleusercontent.com/GhCu4TNocb_ZfPnRRihkDQ4aNppSJ4AWyO4feoT-AefRXk7c3lcRBiHNI1qDuX7iTAkSJth_JUpu2iNExxnLkQG-2RKYWgjpUEvDTkJYrViAEqV3VWRohJxOlR1q_nqd246TZOOjJA=w2400' width="85" height="50"/></a>
+                        <div class="card-body">
+                            <h4 class="card-title"></h4> Christopher Newbolt </h4>
+                            <br></br>
+                            <p class="card-text">Currently a lead for the Boeing R&D division, Chris specializes in mechanical parts and assemblies. He is currently improving his understanding of data analytics to compliment and leverage his understanding of mechanical applications and development as well as acquire tools to efficiently tackle large data. </p>
+                        </div>
+                    </div>
+                </div>
+
+
+
+    <script src="https://code.jquery.com/jquery-3.2.1.js" integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=" crossorigin="anonymous"></script>
+
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+        crossorigin="anonymous">
+        </script>
+
+
+
+
+
+</body>
+
+</html>
+<!--END###############################TEMPLATE BELOW##############################-->

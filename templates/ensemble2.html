@@ -50,10 +50,10 @@
                                 <a href="prescreendata.html">DATA DASHBOARD 1</a>
                             </li>
                             <li>
-                                <a href="ensemble.html">ENSEMBLE ML</a>
+                                <a href="ensemble.html">PROECTED</a>
                             </li>
                             <li>
-                                <a href="NLP_story.html">NATURAL LANGUAGE PROCESSING</a>
+                                <a href="clouds.html">NATURAL LANGUAGE PROCESSING</a>
                             </li>
                             <li>
                                 <a href="wind.html">RANDOM FOREST EVALUATION</a>
@@ -78,10 +78,10 @@
                       TEAM: FANTASTIC 5 
                       
                       <br> </br> 
-              MEMBERS: <a href="http://linkedin.com/in/christopher-newbolt-5902a79">CHRIS,</a> 
+              MEMBERS: <a href="HTTP://ESPN.COM">CHRIS,</a> 
                       <a href="HTTP://ESPN.COM">SUE HELEN,</a>  
-                      <a href="https://www.linkedin.com/in/nana-zhuohui-liang-22a9302a">NANA, </a> 
-                      <a href="http.linkedin.com/in/sonia-yang-69504438">SONIA, </a> 
+                      <a href="HTTP://ESPN.COM">NANA, </a> 
+                      <a href="HTTP://ESPN.COM">SONIA, </a> 
                       <a href="HTTP://ESPN.COM">LINDSAY</a>
                     </p>
                 </div>
@@ -91,148 +91,156 @@
 <!--END!!^^^^^^^^^^^^^^^^^^^^^^^^IN TEMPLATE^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^-->
 
 
-<!-- Fun Fact Carousel to catch attention-->
-            <div id="home"><a href="home"></a></div>
-            <div id="slides" class="carousel slide" data-ride="carousel">
-                <ul class="carousel-indicators">
-                    <li data-target ="#slides" data-slide-to="0" class="active"></li>
-                    <li data-target ="#slides" data-slide-to="1"></li>
-                    <li data-target ="#slides" data-slide-to="2"></li>
-                </ul>
-                <div class="carousel-inner">
-                    <div class="carousel-item active">
-                        <img src="/static/img/background.png" alt="" style="  width: 100%; height: 100% "/>
-                        <div class="carousel-caption">
-                            <h1 class="display-2">Los Angeles County Traffic Collisions Analysis</h1>
-                            <h3>EXPLORE BELOW</h3>
-                        </div>
-                    </div>
-                    <div class="carousel-item">
-                        <img src="/static/img/background2.png" alt="" style="  width: 100%; height: 100% "/>
-                        <div class="carousel-caption">
-                            <h1 class="display-2">On Average 3,287 people die each DAY just from car collisions.</h1>
-                        </div>
-                    </div>
-                    <div class="carousel-item">
-                        <img src="/static/img/background3.png" alt="" style="  width: 100%; height: 100% "/>
-                        <div class="carousel-caption">
-                            <h1 class="display-2">Men participate in more collisions than females in LA County</h1>
-                        </div>
-                    </div>
-                </div>
-            </div>
-<!--delete later-->
+        
+            <div class="container">
+                <div class="row row-grid">
+                    
+                    <div class="col-md-8">
+                        <div class="box box-left">
+                                <hr noshade>
+                            <section id="intro">
+                            <h1>Ensemble Model </h1>
+                            
+                            <hr>
+                           
+                            <figure>
+                            <img src="Logistic.png" alt="Logit Coef" width="500" height="500" class="center">
+                                            
+                            </figure>
+                            
+                            <section id="Variables Used">
+                             </br>
+                           </br>                         
+                           <p><b>Variables Used:</b>
+                           </br>
+                           </br>
+                           Before running the ensemble model, we used RFE (Recursive Feature Elimination) to do variable selection, then we ran a simple Logistic regression to see the performance on the Logit model with only selected variables, it turned out that all the variables that were selected using RFE has a P value less than 0.05, meaning the variables are signifant to the outcome varible. and the model has an R square of 36%. It seems like these variables have a good prediction power for the outcome variable. 
+                           </br>
+                           The Outcome variable is binary, 1 means the movie revene is above average USD$117,000,000 (Good), 0 means the movie revenue is below average (Bad). The reason why we are predicting a binary outcome instead of continous is because we found the variables does not describe the outcome variable well (Revenue of Movie). Then we decided to make the problem into a classification problem and the model showed better results than the linear regression model. Therefore we decided to change the model into a classification model
 
-<!-- Movie search-->
-
-<div class="container-fluid">
-  
-  <div id="demographic"><a href="demographic"></a></div>
-        <div class="container-fluid padding">
-        <div class="row padding">
-            
-                <div class="col-lg-6">
-                    <!--h1>Giphy Search</h1-->
-
-        <!-- This form will be where users input data about the movies -->
-        <form id="movie-form">
-            <label for="movie-input">Search for a movie</label>
-            <input type="text" id="movie-input">
-            <br>
-
-            <!-- This button will trigger our AJAX call -->
-            <input id="find-movie" type="submit" value="Movie Search">
-        </form>
-
-       <!-- <div class="imgGoesHere"></div>-->
-
- 
-    </div>
-<!--delete above Movie Search-->
-  
-  
-  <div class="col-lg-6">
-      <div class="imgGoesHere"></div>
-          <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.7.3/d3.min.js"></script>
-          <script type="text/javascript">
-                          
-            // This .on("click") function will trigger the AJAX Call
-            d3.select("#find-movie").on("click", function (event) {
-
-                // d3.event.preventDefault() can be used to prevent an event's default behavior.
-                // Here, it prevents the submit button from trying to submit a form when clicked
-                d3.event.preventDefault();
-
-                // Here we grab the text from the input box
-                var movie = d3.select("#movie-input").node().value;
-
-                var queryURL = "http://api.giphy.com/v1/gifs/search?q=movies+" + movie +
-                    "&api_key=dc6zaTOxFJmzC&limit=10";
-                d3.json(queryURL, function (error, response) {
-                    if (error) return console.warn(error);
-
-                    // console.log(response);
-                    console.log("url", response);
-                    var url = response.data[0].images.fixed_height.url;
-                    d3.select(".imgGoesHere").append("img").attr("src", url);
-                })
-
-            });
-        </script>
-        </div>
-      </div>
-    </div>
-    
-
-<!--end movie search -->
-
-
-    <div class="container">
-        <div class="row row-grid">
-            <div class="col-md-8">
-                <div class="box box-left">
-                    <section id="intro">
-
-
-                      <!-- <h1>Explanation of Website</h1>-->
-                        <hr>
-                        <figure>
-                            <a target="_blank" href="Ploting_graph_of_Cities.png">
-                                <img id="viz-main" src="Ploting_graph_of_Cities.png" alt="SOMTHING HERE">
-                            </a>
-                        </figure>
-
-                        <section id="summary">
-                            <p class="lead">Can machine learning be used to predict the box office perfomances of movies.
                             </p>
-
-                            <p> 
-                              We used several methods to answer this question. Natural Language processing was used to analyze the movie description to determine if there are different key words of topics that the movie audience find interesting. <br></br>
-                              We used the Random Forest Regression and Classification methods to attempt to predict which factors surrounding a movie influenced the box office performances the most.  
-                            </p>
-<hr>
-                            <p>
-                                This dashboard summarizes the outputs of:
-                            </p>
-
-                            <ul>
-                                <li>Tableau Plots</li>
-                                <li>NLP Key Word Results</li>
-                                <li>Visualizations: Random Forest Regressor</li>
-                                <li>Visualizations: Random Forest Classifier</li>
-                                <li>Visualizations: Multiplex</li>
-
-                            </ul>
+                            </section>
+                        
+                            
+                          </br>
+                          </br>
 
 
+                          <hr width="50%" size="8" align="center">
+                          <hr noshade>
 
+                          <section id="Models used">
+                          <img src="ROC_curve.png" alt="ROC_curve" width="500" height="500" class="center">
+                           </br>
+                           </br>                    
+                           
+                           <p><b>Model Used For Ensemble:</b>
+                           </br>
+                           </br>
+                           Ensemble model is a Logistic Regression model running on top of a series models that were trained to predict the outcome variable. The Models that we used for the Ensemble model are:
+                           </br>
+                           </br>
+                           Support Vector Machine (SVM)
+                           </br>
+                           </br>
+                           K Nearest Neighbors (KNN)
+                           </br>
+                           </br>
+                           Naive Bayes (NB)
+                           </br>
+                           </br>
+                           Multilayer Perceptron Neural Network (MLPNN)
+                           </br>
+                           </br>
+                           Random Forest (RF)
+                           </br>
+                           </br>
+                           Gradient Boosting (GBM)
+                           </br>
+                           </br>
+                           Logistic Regression (LR)
+                           </br>
+                           </br>
+                           After plotting out the ROC curve for all Models including Ensemble, it is clear that the ensemble model is much better than all the other models that were trained. The Esemble model has a ROC of 83%, whereas all the other models have ROC around 70% 
+                           </p>
+                           
+                           
+                           <hr>
+
+                          <section id="F1 Score">                  
+                           
+                           <p><b>F1 Scores:</b>
+                           </br>
+                           </br>
+                           Ensemble model also has the highest F1 Score compare to each individual models at 82%, individually GBM is the best performer at 81%, NB is the worst at 73%. The scores here are for the test dataset.
+                           </br>
+                           </br>
+                           Ensemble 
+                           </br>
+                           </br>
+                           <img src="Ensemble.png" alt="Ensemble" width="500" height="150" class="center">
+                           </br>
+                           </br>
+                           Support Vector Machine (SVM)
+                           </br>
+                           </br>
+                           <img src="SVM.png" alt="SVM" width="500" height="150" class="center">
+                           </br>
+                           </br>
+                           K Nearest Neighbors (KNN)
+                           </br>
+                           </br>
+                           <img src="KNN.png" alt="KNN" width="500" height="150" class="center">
+                           </br>
+                           </br>
+                           Naive Bayes (NB)
+                           </br>
+                           </br>
+                           <img src="NB.png" alt="NB" width="500" height="150" class="center">
+                           </br>
+                           </br>
+                           Multilayer Perceptron Neural Network (MLPNN)
+                           </br>
+                           </br>
+                           <img src="MLPNN.png" alt="MLPNN" width="500" height="150" class="center">
+                           </br>
+                           </br>
+                           Random Forest (RF)
+                           </br>
+                           </br>
+                           <img src="RF.png" alt="RF" width="500" height="150" class="center">
+                           </br>
+                           </br>
+                           Gradient Boosting (GBM)
+                           </br>
+                           </br>
+                           <img src="GBM.png" alt="GBM" width="500" height="150" class="center">
+                           </br>
+                           </br>
+                           Logistic Regression (LR)
+                           </br>
+                           </br>
+                           <img src="LR.png" alt="LR" width="500" height="150" class="center">
+                           </br>
+                           </br>
+                         
+                           </p>
+
+
+
+
+
+
+
+
+
+
+        
                         </section>
-
-                    </section>
-                </div>
-            </div>
-
-
+                        </div>
+                    </div>
+                    
+          <!-- DO NOT CHANGE HTML BELOW THIS POINT-->                          
 <!--###############################TEMPLATE BELOW##############################-->
             <div class="col-md-4">
                 <div class="box box-right">
@@ -242,7 +250,7 @@
                     <div class="row">
                         <div class="col-xs-6 col-sm-3 col-md-6">
                             <figure>
-                                <a href="prescreendata.html">
+                                <a href="temp.html">
                                <!--     <img id="landing-viz" src="Temp_Latitude.png" alt="Latitude vs. Temperature">-->
                                   <iframe src="https://giphy.com/embed/KZd26L2o8QXtK" width="85" height="50" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/applause-joker-KZd26L2o8QXtK">Random Forest -Regression</a></p>
                                 </a>
@@ -251,7 +259,7 @@
 
                         <div class="col-xs-6 col-sm-3 col-md-6">
                             <figure>
-                                <a href="ensemble.html">
+                                <a href="humid.html">
                                 <!--    <img id="landing-viz" src="Humidity_Latitude.png" alt="Random Forest - Classifier"> -->
                                   <iframe src="https://giphy.com/embed/KZd26L2o8QXtK" width="85" height="50" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/applause-joker-KZd26L2o8QXtK">Random Forest - Classifier</a></p>
                                 </a>
@@ -260,7 +268,7 @@
 
                         <div class="col-xs-6 col-sm-3 col-md-6">
                             <figure>
-                                <a href="NLP_story.html">
+                                <a href="clouds.html">
                                  <!--   <img id="landing-viz" src="Cloudiness_Latitude.png" alt="Data Probing Plots"> -->
                                   <iframe src="https://giphy.com/embed/KZd26L2o8QXtK" width="85" height="50" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/applause-joker-KZd26L2o8QXtK">Data Probing Plots</a></p>
                                 </a>
