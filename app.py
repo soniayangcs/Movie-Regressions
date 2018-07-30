@@ -9,6 +9,16 @@ from nltk.corpus import stopwords
 import re
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics import mean_squared_error
+from sklearn.svm import SVC, LinearSVC
+from sklearn.naive_bayes import GaussianNB
+from sklearn.ensemble import RandomForestClassifier, GradientBoostingClassifier
+from sklearn.linear_model import LogisticRegression
+from sklearn.neighbors import KNeighborsClassifier
+from sklearn.neural_network import MLPClassifier
+from sklearn.kernel_approximation import Nystroem
+from sklearn.kernel_approximation import RBFSampler
+from sklearn.pipeline import make_pipeline
+from sklearn.metrics import roc_auc_score
 
 REPLACE_BY_SPACE_RE = re.compile('[/(){}\[\]\|@,;]"')
 BAD_SYMBOLS_RE = re.compile('[^0-9a-z #+_]')
@@ -28,20 +38,57 @@ def text_prepare(text):
     
     return text
 
+def train_predict(model_list):
+    """Fit models in list on training set and return preds"""
+    print("Fitting models.")
+    model_results = {}
+    for i, (name, m) in enumerate(get_models().items()):
+        print("%s..." % name, end=" ", flush=False)
+        m.fit(x_train_f, y_train)
+        model_results[name] = m.predict(X_test)
+        print("done")
+    
+    #import pdb; pdb.set_trace()
+    P = pd.DataFrame(model_results)
+    print("Done.\n")
+    
+    lr = LogisticRegression(C=100, random_state=0)
+    lr.fit(P,y_test)
+
+    ensemble=lr.predict(P)
+    return ensemble
+    
+#set up dataframe
+df = pd.DataFrame()
+df["popularity"] = [0]
+df['Crime_genre'] = [0]
+df['vote_count'] = [0]
+df['Western_genre'] = [0]
+df['Adventure_genre'] = [0]
+df['Science Fiction_genre'] = [0]
+df['Dec_releaseMon'] = [0]
+df['May_releaseMon'] = [0]
+df['Oct_releaseMon']=[0]
+df['Jul_releaseMon']=[0]
+df['Mar_releaseMon']=[0]
+df['Nov_releaseMon']=[0]
+df['Apr_releaseMon']=[0]
+df['Jun_releaseMon']=[0]
+df['Feb_releaseMon']=[0]
+df['Aug_releaseMon']=[0]
+df['Sep_releaseMon']=[0]
+df['Jan_releaseMon']=[0]
+
 app = Flask(__name__)
 
 #chris add
-@app.route("/")
-
-def main():
-    return render_template('index2.html')
-if __name__ == "__main__":
-    app.debug = True
-    app.run()
+#@app.route("/")
+#def index():
+#    return render_template('index2.html')
 
 
-@app.route('/predict_overview', methods=['GET','POST'])
-def predict_overview():
+@app.route('/predicto', methods=['GET','POST'])
+def poverview():
     if request.method == 'POST':
         testword = request.form["wordName"]
         cleanword = text_prepare(testword)
@@ -53,28 +100,33 @@ def predict_overview():
         text_featuresp.columns = vecp.get_feature_names()
         prediction = clf.predict(text_features.values).tolist()
         predictionp = clfp.predict(text_featuresp.values).tolist()
-        #return jsonify({'prediction': list(prediction); 'overview': list(testword)})
-        return render_template("results.html", prediction="$"+str(int(prediction[0])),popularity=predictionp[0],overview=testword) 
+        #return jsonify([{'prediction': list(prediction), 'overview': list(testword)}])
+        return render_template("overviewresult.html", prediction="$"+str(int(prediction[0])),popularity=predictionp[0],overview=testword)
+    
+    return render_template('overviewform.html')
 
-    return render_template('form.html')
-
-@app.route('/predict_ensembles', methods=['GET','POST'])
-def predict_ensembles():
+@app.route('/predicte', methods=['GET','POST'])
+def pensemble():
     if request.method == 'POST':
-        testword = request.form["wordName"]
-        cleanword = text_prepare(testword)
-        transformed = vec.transform([cleanword])
-        transformedp = vecp.transform([cleanword])
-        text_features = pd.DataFrame(transformed.todense())
-        text_featuresp = pd.DataFrame(transformedp.todense())
-        text_features.columns = vec.get_feature_names()
-        text_featuresp.columns = vecp.get_feature_names()
-        prediction = clf.predict(text_features.values).tolist()
-        predictionp = clfp.predict(text_featuresp.values).tolist()
-        #return jsonify({'prediction': list(prediction); 'overview': list(testword)})
-        return render_template("results.html", prediction="$"+str(int(prediction[0])),popularity=predictionp[0],overview=testword) 
+        popularity = request.form["pop"]
+        vote_count = request.form["vote"]
+        genre = request.form["genre"]
+        month = request.form["month"]
+        df[month]=[1]
+        #cleanword = text_prepare(testword)
+        #transformed = vec.transform([cleanword])
+        #transformedp = vecp.transform([cleanword])
+        #text_features = pd.DataFrame(transformed.todense())
+        #text_featuresp = pd.DataFrame(transformedp.todense())
+        #text_features.columns = vec.get_feature_names()
+        #text_featuresp.columns = vecp.get_feature_names()
+        #prediction = clf.predict(text_features.values).tolist()
+        #predictionp = clfp.predict(text_featuresp.values).tolist()
+        return jsonify([{'popularity':list(popularity), 'vote':list(vote_count), 'genre':genre, 'month':month}])
+        #return jsonify(df)
+        #return render_template("results.html", prediction="$"+str(int(prediction[0])),popularity=predictionp[0],overview=testword) 
 
-    return render_template('form.html')
+    return render_template('ensembleform.html')
      
 if __name__ == '__main__':
      # Load your vectorizer
@@ -82,5 +134,5 @@ if __name__ == '__main__':
      vecp = joblib.load("NLP_vectorizer_popularity.pkl")
      clf = joblib.load("NLP_model_revenue.pkl")
      clfp = joblib.load("NLP_model_popularity.pkl")
-     
+     clfe = joblib.load("ensemble_model.pkl")
      app.run()

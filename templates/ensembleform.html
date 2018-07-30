@@ -33,23 +33,24 @@
             </div>
             <div class="row">
                 <div class="col-md-offset-2 col-md-8">
-                    <form method="POST" action="/predict" role="form", name="wordform">
+                    <form method="POST" action="/predicte" role="form", name="wordform">
                         <div class="form-group">
-                            <label for="popularity">Popularity Score</label>
-                            <input type="number" class="form-control" id="Popularity" name="Pop" placeholder="Value between 0 and 875">
-                            <label for="Crime_genre">Crime Genre</label>
-                            <input type="text" class="form-control" id="Crime" name="crime" placeholder="1 or 0">
-                            <label for="vote_count">Vote Count</label>
-                            <input type="number" class="form-control" id="Vote" name="vote" placeholder="Value between 0 and 13752">
-                            <label for="Western_genre">Western Genre</label>
-                            <input type="text" class="form-control" id="Western" name="western" placeholder="1 or 0">
-                            <label for="Adventure_genre">Adventure Genre</label>
-                            <input type="text" class="form-control" id="Adventure" name="adv" placeholder="1 or 0">
-                            <label for="Science Fiction_genre">Science Fiction Genre</label>
-                            <input type="text" class="form-control" id="SciFi" name="wordName" placeholder="1 or 0">
+                            <label for="popularity">Popularity Score (Value between 0 and 875)</label>
+                            <input type="number" class="form-control" id="popularity" name="pop" placeholder="Value between 0 and 875" value="0">
+                            <label for="vote_count">Vote Count (Value between 0 and 13752)</label>
+                            <input type="number" class="form-control" id="Vote" name="vote" placeholder="Value between 0 and 13752" value="0">
+                            <label for="genre">Genre</label>
+                            </br>
+                            <select class="form-control" id="genre" name="genre">
+                                <option value="Crime_genre">Crime</option>
+                                <option value="Western_genre">Western</option>
+                                <option value="Adventure_genre">Adventure</option>
+                                <option value="Science Fiction_genre">Science Fiction</option>
+                                <option value="Other_genre">Other</option>
+                            </select>
                             <label for="Month">Month</label>
                             </br>
-                            <select name="Month">
+                            <select class="form-control" id="month" name="month">
                                 <option value="Jan_releaseMon">Jan</option>
                                 <option value="Feb_releaseMon">Feb</option>
                                 <option value="Mar_releaseMon">Mar</option>
