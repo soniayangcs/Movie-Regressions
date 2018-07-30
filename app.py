@@ -144,18 +144,9 @@ def pensemble():
             df['Western_genre'] = [0]
         else:
             df[genre]=[1]
-        #cleanword = text_prepare(testword)
-        #transformed = vec.transform([cleanword])
-        #transformedp = vecp.transform([cleanword])
-        #text_features = pd.DataFrame(transformed.todense())
-        #text_featuresp = pd.DataFrame(transformedp.todense())
-        #text_features.columns = vec.get_feature_names()
-        #text_featuresp.columns = vecp.get_feature_names()
-        #prediction = clf.predict(text_features.values).tolist()
-        #predictionp = clfp.predict(text_featuresp.values).tolist()
-        #return jsonify([{'popularity':list(popularity), 'vote':list(vote_count), 'genre':genre, 'month':month}])
-        return jsonify(json.dumps(json.loads(df.to_json(orient='records'))))
-        #return render_template("results.html", prediction="$"+str(int(prediction[0])),popularity=predictionp[0],overview=testword) 
+        predictione = clfe.predict(df.values).tolist()
+        #return jsonify(json.dumps(json.loads(df.to_json(orient='records'))))
+        return render_template("ensembleresult.html", popularity=popularity,vote_count=vote_count, genre=genre,month=month) 
 
     return render_template('ensembleform.html')
      
