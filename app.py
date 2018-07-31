@@ -4,6 +4,7 @@ import pandas as pd
 import numpy as np
 #Remove stop words
 import nltk
+nltk.data.path.append("nltk_data")
 nltk.download('stopwords')
 from nltk.corpus import stopwords
 import json
@@ -25,6 +26,19 @@ REPLACE_BY_SPACE_RE = re.compile('[/(){}\[\]\|@,;]"')
 BAD_SYMBOLS_RE = re.compile('[^0-9a-z #+_]')
 STOPWORDS = set(stopwords.words('english'))
 
+vec = joblib.load("NLP_vectorizer_revenue.pkl")
+vecp = joblib.load("NLP_vectorizer_popularity.pkl")
+clf = joblib.load("NLP_model_revenue.pkl")
+clfp = joblib.load("NLP_model_popularity.pkl")
+svc = joblib.load("1svc_model.pkl")
+nb = joblib.load("2nb_model.pkl")
+knn = joblib.load("3knn_model.pkl")
+lr = joblib.load("4lr_model.pkl")
+nn = joblib.load("5nn_model.pkl")
+gb = joblib.load("6gb_model.pkl")
+rf = joblib.load("7rf_model.pkl")
+enlr = joblib.load("8enlr_model.pkl")
+
 def text_prepare(text):
     """
         text: a string
@@ -39,50 +53,6 @@ def text_prepare(text):
     
     return text
 
-def get_models():
-    """Generate a library of base learners."""
-    nb = GaussianNB()
-    svc = SVC(C=100, probability=True)
-    knn = KNeighborsClassifier(n_neighbors=3)
-    lr = LogisticRegression(C=100, random_state=0)
-    nn = MLPClassifier((80, 10), early_stopping=False, random_state=0)
-    gb = GradientBoostingClassifier(n_estimators=100, random_state=0)
-    rf = RandomForestClassifier(n_estimators=10, max_features=3, random_state=0)
-
-    models = {'svm': svc,
-              'knn': knn,
-              'naive bayes': nb,
-              'mlp-nn': nn,
-              'random forest': rf,
-              'gbm': gb,
-              'logistic': lr,
-              }
-
-    return models
-
-
-def train_predict(model_list):
-    """Fit models in list on training set and return preds"""
-
-
-    print("Fitting models.")
-    model_results = {}
-    for i, (name, m) in enumerate(get_models().items()):
-        print("%s..." % name, end=" ", flush=False)
-        m.fit(x_train_f, y_train)
-        model_results[name] = m.predict(X_test)
-        print("done")
-    
-    #import pdb; pdb.set_trace()
-    P = pd.DataFrame(model_results)
-    print("Done.\n")
-    
-    lr = LogisticRegression(C=100, random_state=0)
-    lr.fit(P,y_test)
-
-    ensemble=lr.predict(P)
-    return ensemble
-    
 #set up dataframe
 df = pd.DataFrame()
 df["popularity"] = [0]
@@ -174,16 +144,4 @@ def pensemble():
      
 if __name__ == '__main__':
      # Load your vectorizer
-     vec = joblib.load("NLP_vectorizer_revenue.pkl")
-     vecp = joblib.load("NLP_vectorizer_popularity.pkl")
-     clf = joblib.load("NLP_model_revenue.pkl")
-     clfp = joblib.load("NLP_model_popularity.pkl")
-     svc = joblib.load("1svc_model.pkl")
-     nb = joblib.load("2nb_model.pkl")
-     knn = joblib.load("3knn_model.pkl")
-     lr = joblib.load("4lr_model.pkl")
-     nn = joblib.load("5nn_model.pkl")
-     gb = joblib.load("6gb_model.pkl")
-     rf = joblib.load("7rf_model.pkl")
-     enlr = joblib.load("8enlr_model.pkl")
      app.run(debug=True)
