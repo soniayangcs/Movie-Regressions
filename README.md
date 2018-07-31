@@ -16,10 +16,10 @@ Project 3: Movie regression models to predict the effects of different attribute
 
 ### Running Flask
 * To run Flask successfully, we need to:
-    1.Download all the models using `joblib` through ipython notebook;
-    2.Load all the models into `app.py` when preparing the python code for running the Flask;
-    3.Create html templates that can successfully capture all the data we need in the correct form and display results in a readable format;
-    4.Perform **feature engineering** on data received from html. For NLP Models, we also need to load in the vectorizers that had been trained in ipython notebook to vectorize the overview text. 
+    1. Download all the models using `joblib` through ipython notebook;
+    2. Load all the models into `app.py` when preparing the python code for running the Flask;
+    3. Create html templates that can successfully capture all the data we need in the correct form and display results in a readable format;
+    4. Perform **feature engineering** on data received from html. For NLP Models, we also need to load in the vectorizers that had been trained in ipython notebook to vectorize the overview text. 
 
 * Roadblock encountered: 
     1. The Profitability Prediction Class model first used 7 different models to predict the result and then used ensemble method to make the final prediction. Solely using the ensemble model package was not sufficient to predict the result (will have code error). As such, we need to download all 7 prediction models in addition to the ensemble model and fit the overview text through all these models. 
