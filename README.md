@@ -16,24 +16,24 @@ Project 3: Movie regression models to predict the effects of different attribute
 
 ### Running Flask
 * To run Flask successfully, we need to:
-    1.download all the models using `joblib` through ipython notebook;
-    2.load all the models into `app.py` when preparing the python code for running the Flask;
-    3.create html templates that can successfully capture all the data we need in the correct form and display results in a readable format;
-    4.perform **feature engineering** on data received from html. For NLP Models, we also need to load in the vectorizers that had been trained in ipython notebook to vectorize the overview text. 
+    1.Download all the models using `joblib` through ipython notebook;
+    2.Load all the models into `app.py` when preparing the python code for running the Flask;
+    3.Create html templates that can successfully capture all the data we need in the correct form and display results in a readable format;
+    4.Perform **feature engineering** on data received from html. For NLP Models, we also need to load in the vectorizers that had been trained in ipython notebook to vectorize the overview text. 
 
 * Roadblock encountered: 
-    1. The Profitability Prediction Class model first used 7 different models to predict the result and then used ensemble method to make the final prediction. Solely using the ensemble model package was not sufficient to predict the result (will have code error). As such, we need to download all 7 prediction models in addition to the ensemble model and fit the overview text through all these model. 
+    1. The Profitability Prediction Class model first used 7 different models to predict the result and then used ensemble method to make the final prediction. Solely using the ensemble model package was not sufficient to predict the result (will have code error). As such, we need to download all 7 prediction models in addition to the ensemble model and fit the overview text through all these models. 
 
 ### Heroku Deployment
 * To deploy model successfully through Heroku, we need to:
-    1. include Procfile to initial python running on `app.py`;
-    2. include `requirement.txt` file to specify all packages/liabraries needs to be downloaded in order to make the `app.py` run           successfully through Heroku;
-    3. include all pickled models, `app.py`, html templates (with associated CSS files);
+    1. Include Procfile to initial python running on `app.py`;
+    2. Include `requirement.txt` file to specify all packages/libraries needs to be downloaded in order to make the `app.py` run           successfully through Heroku;
+    3. Include all pickled models, `app.py`, html templates (with associated CSS files);
 
-* Roackblocks encountered:
-    1. All python packages/liabrairies used in either ipython notebook or in `app.py` needs to be included in the `requirement.txt`.
+* Roadblocks encountered:
+    1. All python packages/libraries used in either ipython notebook or in `app.py` needs to be included in the `requirement.txt`.
     2. For package `nltk`, solely include the name in the requirements is not sufficient. we also need to create a new text file             `nltk.txt` to specify the **corpora** (for our purpose, we need **stopword**) needed in the code. 
-    3. The size of the files (including all models, packages, liabraries) deployed to Heroku needs to be smaller than 360.0MB. As such,     we need to create a new repo solely for deployement of the model
+    3. The size of the files (including all models, packages, libraries) deployed to Heroku needs to be smaller than 360.0MB. As such,     we need to create a new repo solely for deployment of the models.
     
 ## Story
 
