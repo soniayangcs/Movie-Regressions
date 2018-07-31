@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+
+<!--START!!^^^^^^^^^^^^^^^^^^^^^^^^IN TEMPLATE^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^-->
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge"> 
+    <title>Movie Metadata and predictions</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+        crossorigin="anonymous">
+    <link rel="stylesheet" href="../static/style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
+
+ <!--D3 cdn-->
+ <script src='https://cdnjs.cloudflare.com/ajax/libs/d3/4.13.0/d3.min.js'></script>
+ <script src='https://d3js.org/d3.v4.min.js'></script>
+ <script src='/static/d3pie.min.js'></script>
+
+
+
+  </head>
+
+<body>
+     <!-- Navigation -->
+     <nav class="navbar navbar-default sticky-top">
+
+        <div class = "container-fluid">
+            <button class = "navbar-toggle" type="button" data-toggle="collapse" data-target="#navbarResponsive">
+            <span class="navbar-toggler-icon"></span>
+            </button>  
+
+            <a class = "navbar-brand" href="index3.html"> <h2>BLOCKBUSTER or FLOP?!!! A MACHINE LEARNING STORY...</h2></a>
+         </div>
+                   
+      
+
+                <div class="nav navbar-nav navbar-right">
+                    <p class="sign">A PROJECT BY TH3 FANTASTIC FIV3:            
+                      <a href="http://linkedin.com/in/christopher-newbolt-5902a79">CHRIS,</a> 
+                      <a href="Hhttps://www.linkedin.com/in/suedelcarpiobellido">SUE HELEN,</a>  
+                      <a href="https://www.linkedin.com/in/nana-zhuohui-liang-22a9302a">NANA, </a> 
+                      <a href="http://linkedin.com/in/sonia-yang-69504438">SONIA, </a> 
+                      <a href="https://www.linkedin.com/in/lindsay-yan-8a09469b">LINDSAY</a>
+                    </p>
+                </div>
+            
+        
+                    
+          
+                    <div class="collapse navbar-collapse" id="navbarResponsive">
+                        <ul class="nav navbar-nav">
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">CHAPTERS
+                                    <span class="caret"></span>
+                                </a>
+                                <ul class="dropdown-menu">
+                                        <li><a href="prescreendata.html">FEATURE ENGINEERING AND DATA PROBBING</a></li>
+                                        <li> <a href="ensemble2.html">A PREDICTIVE MODEL USING USING ENSEMBLE ML</a></li>
+                                        <li> <a href="NLP_story.html">A PREDICTIVE MODEL USING NATURAL LANGUAGE PROCESSING, A FEATURE ENGINEERING</a> </li>
+                                        <li role="separator" class="divider"></li>
+                                        <li><a href="https://meowmovie5000meow.herokuapp.com/predicto">PREDICT YOUR REVENUE CLASS</a></li>
+                                        <li><a href="https://meowmovie5000meow.herokuapp.com/predicte">SCORE YOU MOVIE DESCRIPTION</a> </li>
+                                     </ul>
+                            </li>
+                        <li><a href="#summary">RESULTS</a></li>
+                    </ul>        
+        
+    </div>
+</nav>
+<!--END!!^^^^^^^^^^^^^^^^^^^^^^^^IN TEMPLATE^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^-->
+
+<!--I can't get it to work in this file, unfortunately. it does in index.html
+DELETE THE COMMENTS AT 'HERE' IF YOU WANT TO TRY AND GET IT WORKING
+-->
+<!--carousel start-->
+
+
+<!--HERE
+
+<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+        <ol class="carousel-indicators">
+          <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+          <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+          <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+        </ol>
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <img src="img/background1.jpg" alt="First slide"  style=" height: 20%; width: 100% "/>
+            <div class="carousel-caption d-none d-md-block">
+                <b class="display-2">..ok.</b>
+                <p>.pp..</p>
+              </div>
+          </div>
+          <div class="carousel-item">
+            <img src="img/background1.jpg" alt="Second slide" style=" width: 100%; height: 20%"/>
+          </div>
+          <div class="carousel-item">
+            <img src="img/background1.jpg" alt="Third slide" style=" width: 100%; height: 20%"/>
+          </div>
+        </div>
+        <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="sr-only">Next</span>
+        </a>
+      </div>
+      
+    HERE-->
+
+
+
+  <!--carousel finish-->
+
+
+<!-- Movie search-->
+
+<div class="container-fluid">
+  
+  <div id="demographic"><a href="demographic"></a></div>
+        <div class="container-fluid padding">
+        <div class="row padding">
+            
+                <div class="col-lg-4">
+                    <!--h1>Giphy Search</h1-->
+
+        <!-- This form will be where users input data about the movies -->
+        <form id="movie-form">
+            <label for="movie-input">Search for a movie</label>
+            <input type="text" id="movie-input">
+            <br>
+
+            <!-- This button will trigger our AJAX call -->
+            <input id="find-movie" type="submit" value="Movie Search">
+        </form>
+    </div>
+<!--delete above Movie Search-->
+  
+ <!-- Orignianl location of Display movie search -->
+
+
+        </div>
+    </div>
+    
+
+<!--end movie search -->
+
+
+    <div class="container">
+        <div class="row row-grid">
+            <div class="col-md-8">
+                <div class="box box-left">                   
+                    <section id="intro">
+                        <figure>
+
+<!--Display movie search here start-->
+                <div class="container">
+                <div class="col-lg-8">
+                        <div class="imgGoesHere"></div>
+                            <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.7.3/d3.min.js"></script>
+                            <script type="text/javascript">
+                                            
+                                // This .on("click") function will trigger the AJAX Call
+                                d3.select("#find-movie").on("click", function (event) {
+                    
+                                    // d3.event.preventDefault() can be used to prevent an event's default behavior.
+                                    // Here, it prevents the submit button from trying to submit a form when clicked
+                                    d3.event.preventDefault();
+                    
+                                    // Here we grab the text from the input box
+                                    var movie = d3.select("#movie-input").node().value;
+                    
+                                    var queryURL = "http://api.giphy.com/v1/gifs/search?q=movies+" + movie +
+                                        "&api_key=dc6zaTOxFJmzC&limit=10";
+                                    d3.json(queryURL, function (error, response) {
+                                        if (error) return console.warn(error);
+                    
+                                        // console.log(response);
+                                        console.log("url", response);
+                                        var url = response.data[0].images.fixed_height.url;
+                                        d3.select(".imgGoesHere").append("img").attr("src", url);
+                                    })
+                    
+                                });
+                            </script>
+                            </div></div>
+
+<!--Display movie search here end-->
+
+                        </figure>
+
+                        <section id="summary">
+                            <p class="lead">Can machine learning be used to predict the box office perfomances of movies.
+                            </p>
+
+                            <p> 
+                              <h3>Techniques Used:</h3>
+                              <h4>Data Probing</h4>
+                            
+                             Data from this project was taken from <a href="https://www.kaggle.com/tmdb/tmdb-movie-metadata#tmdb_5000_movies.csv/">a Kaggle Moie Database</a> 
+                             Initially we searched the movie metadata for clues to this issue, following EXTENSIVE feature engineering of course.
+                               Any trends noted were recorded in a dashboard.
+                              <br></br>
+                              <h4>NLP and Random Forest Regressor</h4>
+                              Natural Language Processing was used to dissect the movie descriptions. The intent was to build a model that not only 
+                              determines if there are trendy words or word combinations to determine whether movies will be hits but also will provide and estimate of Revenue
+                              that movie will earn at the box office. A Random Forest Regressor was used to build the final model. 
+                            
+                              <br></br>
+                              <p class="modelIN">Inputs: Movie description, Budget </p> 
+                              <p class="modelOUT">Outputs: Revenue </p>
+                                <br></br>
+                              <h4>Ensemble Analysis for Movie Revenue Classification</h4>                              
+                              Next we created an Regression analysis using common movie data. Initially this model was created using Random Forest but the resulting
+                              model was a poor fit based on the scores. After examining the results of the intial run, we use RFE to eliminate features and built a new model
+                              using ensemble. The ensemble model was more accurate when we used it to classify the movie as into two categories, those with above average revenue
+                              potetial and those below. 
+                             we examined the movie metadata and reduced the features
+                              <br></br>
+                              <p class="modelIN">Inputs: Genre, Released date, Budget, Ratings, Popularity</p>
+                              <p class="modelOUT">Outputs: Movie Revenue Classification based on an average of USD $117,000,000</p>
+                            <br></br>
+
+                                                          
+                            </p></section>
+<hr>
+                    <section id="conclusion">
+                            <p class="lead">
+                            In summary this site presents the collected work of the following tools:
+                            </p>
+                            <ul class ="sumlist">
+                                <li>Feature Engineer</li>
+                                <ul>
+                                    <li>Python</li>
+                                    <li>Excel</li>
+                                    <li>NLP </li>
+                                </ul>
+                                <li>Machine Learning and Modeling </li>
+                                
+                                <ul>
+                                   <li>Ensemble</li>
+                                   <li>Model: Random Forest Classifier</li>
+                                   <li>Model: Random Forest Regressor</li>
+                                </ul>
+                                
+                                <li> Visualizations </li>
+                                <ul>
+                                    <li>Pandas</li>
+                                    <li>Tableau</li>
+                                    <li>HTML, JS</li>
+                                    <li>Heroku for Full Stack</li>
+                                </ul>
+
+                            </ul>
+
+
+                        </section>
+                        
+
+                    </section>
+                </div>
+            </div>
+
+
+<!--###############################TEMPLATE BELOW##############################-->
+            <div class="col-md-4">
+                <div class="box box-right">
+                    <h2>CHAPTERS</h2>
+                    <hr>
+
+                    <div class="row">
+                        <div class="col-xs-6 col-sm-3 col-md-6">
+                            <figure>
+                                <a href="prescreendata.html">
+                             
+                                  <iframe src="https://giphy.com/embed/7TiefcAB5P4nlV1Ok5" width="125" height="85" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="prescreendata.html"> Data Probbing</a></p>
+                                  
+                                </a>
+                            </figure>
+                        </div>
+
+                        <div class="col-xs-6 col-sm-3 col-md-6">
+                            <figure>
+                                <a href="ensemble2.html">
+                               
+                                  <iframe src="https://giphy.com/embed/l378octkVFCX8ApaM" width="125" height="85" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="ensemble2.html">Ensemble</a></p>
+                                  
+                                </a>
+                            </figure>
+                        </div>
+
+                        <div class="col-xs-6 col-sm-3 col-md-6">
+                            <figure>
+                                <a href="NLP_story.html">
+                                 
+                                  <iframe src="https://giphy.com/embed/GBIzZdF3AxZ6" width="125" height="85" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="NLP_story.html">NLP</a></p>
+                                  
+                                </a>
+                            </figure>
+                        </div>
+
+                        <div class="col-xs-6 col-sm-3 col-md-6">
+                                <figure>
+                                    <a href="">
+                                 
+                                      <iframe src="https://giphy.com/embed/Ll2fajzk9DgaY" width="125" height="85" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href=""> I got Nothing</a></p>
+                                    
+                                    </a>
+                                </figure>
+                            </div>
+
+                        <div class="col-xs-6 col-sm-3 col-md-6">
+                            <figure>
+                                <a href="https://meowmovie5000meow.herokuapp.com/predicto">
+                             
+                                  <iframe src="https://giphy.com/embed/KZd26L2o8QXtK" width="125" height="85" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://meowmovie5000meow.herokuapp.com/predicto"> NLP Revenue Generator</a></p>
+                                </a>
+                            </figure>
+                        </div>
+                        <div class="col-xs-6 col-sm-3 col-md-6">
+                                <figure>
+                                    <a href="https://meowmovie5000meow.herokuapp.com/predicte">
+                                
+                                      <iframe src="https://giphy.com/embed/3oEjI5VtIhHvK37WYo" width="125" height="85" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://meowmovie5000meow.herokuapp.com/predicte"> Profitability Calculator</a></p>
+                                     
+                                    </a>
+                                </figure>
+                            </div>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+           <!--- Teammates -->
+           <div class="container-fluid padding">
+                <div class="row welcome text-center">
+                    <div class="col-12">
+                        <h1 class="display-4">We are the Fantastic Fiv3!!</h1>
+                    </div>
+                </div>
+            </div>
+    
+
+        <!-- Info Boxes -->
+
+        <!-- Info Boxes -->
+
+        <div class"container-fluid padding">
+                <div class="row padding">
+                    <div class="col-md-2">
+                        <div class="card">
+                            <img class="card-img-top" src="img/sue.jpg" alt="Great Picture" height="150" width="150">
+                            <div class="card-body">
+                                <h4 class="card-title"></h4> Sue Helen</h4>
+                                <br></br>
+                                <p class="card-text">Sue is an IT professional with solid data analytics skills and extensive teamwork experience as Business Analytics Consultant
+                                and Project Manager. With more than 8 years of working experience in projects of Data Warehousing, Data Governance, Data Quality and everything 
+                                related to get the highest value from client’s information, she also has broad experience on methods and tools for Agile Project Management based 
+                                on best- practices of PMI-PMBOK and Scrum methodologies.</p>
+                            </div>
+                        </div>
+                    </div>
+    
+                    <div class="col-md-2">
+                        <div class="card">
+                                <img class="card-img-top" src="img/bolt.jpeg" alt="Great Picture" height="150" width="150">
+                                <!--a href='https://photos.google.com/share/AF1QipP8Lpvs8RGWVPmL4qBiOfsWFjVkKyfcKS2D1BvlExjHBBpGfqHZQhGOtlPgkR8FCg?key=eXpXMFJ1V1htTmR2YnVlNzFfZTlfcDJlQ3JEOW13&source=ctrlq.org'><img src='https://lh3.googleusercontent.com/GhCu4TNocb_ZfPnRRihkDQ4aNppSJ4AWyO4feoT-AefRXk7c3lcRBiHNI1qDuX7iTAkSJth_JUpu2iNExxnLkQG-2RKYWgjpUEvDTkJYrViAEqV3VWRohJxOlR1q_nqd246TZOOjJA=w2400' width="85" height="50"/></a-->
+                                  <div class="card-body">
+                                <h4 class="card-title"></h4> Christopher Newbolt </h4>
+                                <br></br>
+                                <p class="card-text">Currently a lead for the Boeing R&D division, Chris specializes in mechanical parts and assemblies. He is 
+                                currently improving his understanding of data analytics to compliment and leverage his understanding of mechanical applications 
+                                and development as well as acquire tools to efficiently tackle large data. </p>
+                            </div>
+                        </div>
+                    </div>
+    
+                    <div class="col-md-2">
+                        <div class="card">
+                            <img class="card-img-top" src="img/nana.jpg" alt="Great Picture" height="150" width="150">
+                            <div class="card-body">
+                                <h4 class="card-title"></h4> Nana Liang</h4>
+                                <br></br>
+                                <p class="card-text">Currently a tax senior consultant in PricewaterhouseCooper, 
+                                specialized in R&D tax credit and Transaction Cost Analysis. Recently, Nana was 
+                                selected as a digital accelerator, who will assist the firm to digitalize the work process and 
+                                revolutionize the accounting industry by incorporating new technology and software solution.  </p>
+                            </div>
+                        </div>
+                    </div>
+    
+                    <div class="col-md-2">
+                            <div class="card">
+                                <img class="card-img-top" src="img/sonia.jpg" alt="Great Picture" height="150" width="150">
+                                <div class="card-body">
+                                    <h4 class="card-title"></h4> Sonia Yang</h4>
+                                    <br></br>
+                                    <p class="card-text">Passionate in analyzing data and informing data insight, Sonya worked in 
+                                    various data related career. To further advance the career, she participated the USC Data 
+                                    Analytics bootcamp and mastered various data analytics skills and coding languages (i.e. python, SQL, HTML, Javascripts, etc.).</p>
+                                </div>
+                            </div>
+                        </div>
+    
+                        <div class="col-md-2">
+                                <div class="card">
+                                    <img class="card-img-top" src="img/Lindsay_Photo.png" alt="Great Picture" height="150" width="150">
+                                    <div class="card-body">
+                                        <h4 class="card-title"></h4> Lindsay Yan</h4>
+                                        <br></br>
+                                        <p class="card-text">With strong data analytics skills and proficient in various coding language (Python, SQL, R, VBA, etc.),
+                                        Lindsay is current a DMP and Data Analyst for a media company. As part of her expertise, Lindsay leverage python/SQL to build 
+                                        predictive models to identify highest propensity viewers of shows for targeting.</p>
+                                    </div>
+                                </div>
+                            </div>
+    
+        <script src="https://code.jquery.com/jquery-3.2.1.js" integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=" crossorigin="anonymous"></script>
+    
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+            crossorigin="anonymous">
+            </script>
+
+<!--- Footer -->
+<footer>
+        <div class="container-fluid padding">
+            <div class="row text-center">
+                <div class="col-md-12">
+                    <hr class="light">
+                    <h2> &copy; 2018</h2>
+                    </hr>
+                    </div>
+                </div>
+            </div>
+        </footer>
+
+<hr>
+</body>
+
+</html>
+<!--END###############################TEMPLATE ##############################-->

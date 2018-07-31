@@ -28,68 +28,52 @@
 
 <body>
      <!-- Navigation -->
-    <nav class="navbar navbar-default">
-             <div class="container-fluid">
-               <div class="navbar-header">
-                 <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#neatNavbar" aria-expanded="false">
-                   <span class="sr-only">Toggle navigation</span>
-                   <span class="icon-bar"></span>
-                   <span class="icon-bar"></span>
-                   <span class="icon-bar"></span>
-                 </button>
-                 <!--a class="navbar-brand" href="index.html">BLOCKBUSTER or FLOP?!!  </a-->
-                 <a class="navbar-brand" href="index2.html">BLOCKBUSTER or FLOP?!!! <br></br>A MACHINE LEARNING APPROACH... </a>
-               </div>
-               <div class="collapse navbar-collapse" id="#neatNavbar">
-                <ul class="nav navbar-nav navbar-right">
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Plots
-                            <span class="caret"></span>
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li>
-                                <a href="prescreendata.html">FEATURE ENGINEERING AND DATA PROBBING</a>
-                            </li>
-                            <li>
-                                <a href="ensemble.html">A PREDICTIVE MODEL USING DATA MODELING USING ENSEMBLE ML</a>
-                            </li>
-                            <li>
-                                <a href="NLP_story.html">A PREDICTIVE MODEL USING NATURAL LANGUAGE PROCESSING, A FEATURE ENGINEERING</a>
-                            </li>
-                            <li>
-                                <a href="wind.html">RANDOM FOREST EVALUATION</a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="comparison.html">RESULTS</a>
-                    </li>
-                    <li>
-                        <a href="data.html">CONCLUSION</a>
-                    </li>
-                </ul>
-            </div>
+     <nav class="navbar navbar-default sticky-top">
 
-        </div>
-        <div class="container">
-            <div class="col-md-12">
-                <div class="sigline">
-                    <p>
-                      USC DATA ANALYTICS BOOTCAMP| 
-                      TEAM: FANTASTIC 5 
-                      
-                      <br> </br> 
-              MEMBERS: <a href="http://linkedin.com/in/christopher-newbolt-5902a79">CHRIS,</a> 
-                      <a href="HTTP://ESPN.COM">SUE HELEN,</a>  
-                      <a href="https://www.linkedin.com/in/nana-zhuohui-liang-22a9302a">NANA, </a> 
-                      <a href="http://linkedin.com/in/sonia-yang-69504438">SONIA, </a> 
-                      <a href="HTTP://ESPN.COM">LINDSAY</a>
-                    </p>
-                </div>
-            </div>
+            <div class = "container-fluid">
+                <button class = "navbar-toggle" type="button" data-toggle="collapse" data-target="#navbarResponsive">
+                <span class="navbar-toggler-icon"></span>
+                </button>  
+    
+                <a class = "navbar-brand" href="#"> <h2>BLOCKBUSTER or FLOP?!!! A MACHINE LEARNING STORY...</h2></a>
+             </div>
+                       
+          
+    
+                    <div class="nav navbar-nav navbar-right">
+                        <p class="sign">A PROJECT BY TH3 FANTASTIC FIV3:            
+                          <a href="http://linkedin.com/in/christopher-newbolt-5902a79">CHRIS,</a> 
+                          <a href="Hhttps://www.linkedin.com/in/suedelcarpiobellido">SUE HELEN,</a>  
+                          <a href="https://www.linkedin.com/in/nana-zhuohui-liang-22a9302a">NANA, </a> 
+                          <a href="http://linkedin.com/in/sonia-yang-69504438">SONIA, </a> 
+                          <a href="https://www.linkedin.com/in/lindsay-yan-8a09469b">LINDSAY</a>
+                        </p>
+                    </div>
+                
+            
+                        
+              
+                        <div class="collapse navbar-collapse" id="navbarResponsive">
+                            <ul class="nav navbar-nav">
+                                <li class="dropdown">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">CHAPTERS
+                                        <span class="caret"></span>
+                                    </a>
+                                    <ul class="dropdown-menu">
+                                            <li><a href="prescreendata.html">FEATURE ENGINEERING AND DATA PROBBING</a></li>
+                                            <li> <a href="ensemble2.html">A PREDICTIVE MODEL USING USING ENSEMBLE ML</a></li>
+                                            <li> <a href="NLP_story.html">A PREDICTIVE MODEL USING NATURAL LANGUAGE PROCESSING, A FEATURE ENGINEERING</a> </li>
+                                            <li role="separator" class="divider"></li>
+                                            <li><a href="https://meowmovie5000meow.herokuapp.com/predicto">PREDICT YOUR REVENUE CLASS</a></li>
+                                            <li><a href="https://meowmovie5000meow.herokuapp.com/predicte">SCORE YOU MOVIE DESCRIPTION</a> </li>
+                                         </ul>
+                                </li>
+                            <li><a href="#summary">RESULTS</a></li>
+                        </ul>        
+            
         </div>
     </nav>
-<!--END!!^^^^^^^^^^^^^^^^^^^^^^^^IN TEMPLATE^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^-->
+    <!--END!!^^^^^^^^^^^^^^^^^^^^^^^^IN TEMPLATE^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^-->
         
         <!-- ADD INPUT IN THIS SECTION-->
         
@@ -145,10 +129,12 @@
                             </figure>
 							
 							<h5><b>Step 3.2: Remove stop words</b></h5>
-							<p> "Stopwords" are words which have very little meaning. In NLP it's important to remove anything that doesn't have enough sense in a text, such as: prepositions and conjunctions. We can include regular expressions to remove: punctuation marks, numbers, etc.
+							<p> "Stopwords" are words which have very little meaning. In NLP it's important to remove anything 
+                                text that only apply noise to the model. Stop words are typically words that are prepositions and conjunctions.
+                                Icluding regular expressions removes additional meaningless items like punctuation marks, numbers, etc.
                             </p> 
                             <figure>
-                                        <img id="featureeng_2" src="img/featureeng_2.png" alt="Remove stop words" height="150" width="800">
+                                        <img id="featureeng_2" src="img/featureeng_2.png" alt="Remove stop words" height="150" width="735">
                             </figure>
 							
 							<h5><b>Step 3.3: Tokenize, Vectorize and TF-IDF</b></h5>
@@ -201,7 +187,7 @@
 							<br>
 							<section id="scoremodel">
 							<h4><b>Step 6: Score the model</b></h4>
-							<p> We are going to use r-squared to score the model.<br>
+							<p> The R-squared is used to score the model.<br>
                             </p>
 							 
                             <figure>
@@ -219,24 +205,26 @@
 <!--###############################TEMPLATE BELOW##############################-->
 <div class="col-md-4">
         <div class="box box-right">
-            <h2>Links</h2>
+            <h2>CHAPTERS</h2>
             <hr>
 
             <div class="row">
                 <div class="col-xs-6 col-sm-3 col-md-6">
                     <figure>
                         <a href="prescreendata.html">
-                       <!--     <img id="landing-viz" src="Temp_Latitude.png" alt="Latitude vs. Temperature">-->
-                          <iframe src="https://giphy.com/embed/KZd26L2o8QXtK" width="85" height="50" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/applause-joker-KZd26L2o8QXtK"> Data Probbing</a></p>
+                     
+                          <iframe src="https://giphy.com/embed/7TiefcAB5P4nlV1Ok5" width="125" height="85" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="prescreendata.html"> Data Probbing</a></p>
+                          
                         </a>
                     </figure>
                 </div>
 
                 <div class="col-xs-6 col-sm-3 col-md-6">
                     <figure>
-                        <a href="ensemble.html">
-                        <!--    <img id="landing-viz" src="Humidity_Latitude.png" alt="Random Forest - Classifier"> -->
-                          <iframe src="https://giphy.com/embed/KZd26L2o8QXtK" width="85" height="50" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/applause-joker-KZd26L2o8QXtK">Ensemble</a></p>
+                        <a href="ensemble2.html">
+                       
+                          <iframe src="https://giphy.com/embed/l378octkVFCX8ApaM" width="125" height="85" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="ensemble2.html">Ensemble</a></p>
+                          
                         </a>
                     </figure>
                 </div>
@@ -244,20 +232,40 @@
                 <div class="col-xs-6 col-sm-3 col-md-6">
                     <figure>
                         <a href="NLP_story.html">
-                         <!--   <img id="landing-viz" src="Cloudiness_Latitude.png" alt="Data Probing Plots"> -->
-                          <iframe src="https://giphy.com/embed/KZd26L2o8QXtK" width="85" height="50" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/applause-joker-KZd26L2o8QXtK">NLP</a></p>
+                         
+                          <iframe src="https://giphy.com/embed/GBIzZdF3AxZ6" width="125" height="85" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="NLP_story.html">NLP</a></p>
+                          
                         </a>
                     </figure>
                 </div>
 
                 <div class="col-xs-6 col-sm-3 col-md-6">
+                        <figure>
+                            <a href="">
+                         
+                              <iframe src="https://giphy.com/embed/Ll2fajzk9DgaY" width="125" height="85" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href=""> I got Nothing</a></p>
+                            
+                            </a>
+                        </figure>
+                    </div>
+
+                <div class="col-xs-6 col-sm-3 col-md-6">
                     <figure>
-                        <a href="wind.html">
-                      <!--      <img id="landing-viz" src="Wind_Speed_Latitude.png" alt="Natural Language Processing"> -->
-                          <iframe src="https://giphy.com/embed/KZd26L2o8QXtK" width="85" height="50" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/applause-joker-KZd26L2o8QXtK">Natural Language Processing</a></p>
+                        <a href="https://meowmovie5000meow.herokuapp.com/predicto">
+                     
+                          <iframe src="https://giphy.com/embed/KZd26L2o8QXtK" width="125" height="85" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://meowmovie5000meow.herokuapp.com/predicto"> NLP Revenue Generator</a></p>
                         </a>
                     </figure>
                 </div>
+                <div class="col-xs-6 col-sm-3 col-md-6">
+                        <figure>
+                            <a href="https://meowmovie5000meow.herokuapp.com/predicte">
+                        
+                              <iframe src="https://giphy.com/embed/3oEjI5VtIhHvK37WYo" width="125" height="85" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://meowmovie5000meow.herokuapp.com/predicte"> Profitability Calculator</a></p>
+                             
+                            </a>
+                        </figure>
+                    </div>
 
             </div>
         </div>
@@ -266,77 +274,110 @@
 </div>
 </div>
 
+   <!--- Teammates -->
+   <div class="container-fluid padding">
+        <div class="row welcome text-center">
+            <div class="col-12">
+                <h1 class="display-4">We are the Fantastic Fiv3!!</h1>
+            </div>
+        </div>
+    </div>
+
+
+<!-- Info Boxes -->
 
 <!-- Info Boxes -->
 
 <div class"container-fluid padding">
-    <div class="row padding">
-        <div class="col-md-2">
-            <div class="card">
-                <img class="card-img-top" src="img/sue.jfif" alt="Great Picture" height="150" width="150">
-                <div class="card-body">
-                    <h4 class="card-title"></h4> Sue Helen</h4>
-                    <br></br>
-                    <p class="card-text">BLAH BLAH BLAH BLAH BLAH</p>
-                </div>
-            </div>
-        </div>
-
-        <div class="col-md-2">
-            <div class="card">
-                    <img class="card-img-top" src="img/bolt.jpeg" alt="Great Picture" height="150" width="150">
-                    <!--a href='https://photos.google.com/share/AF1QipP8Lpvs8RGWVPmL4qBiOfsWFjVkKyfcKS2D1BvlExjHBBpGfqHZQhGOtlPgkR8FCg?key=eXpXMFJ1V1htTmR2YnVlNzFfZTlfcDJlQ3JEOW13&source=ctrlq.org'><img src='https://lh3.googleusercontent.com/GhCu4TNocb_ZfPnRRihkDQ4aNppSJ4AWyO4feoT-AefRXk7c3lcRBiHNI1qDuX7iTAkSJth_JUpu2iNExxnLkQG-2RKYWgjpUEvDTkJYrViAEqV3VWRohJxOlR1q_nqd246TZOOjJA=w2400' width="85" height="50"/></a-->
-                      <div class="card-body">
-                    <h4 class="card-title"></h4> Christopher Newbolt </h4>
-                    <br></br>
-                    <p class="card-text">Currently a lead for the Boeing R&D division, Chris specializes in mechanical parts and assemblies. He is currently improving his understanding of data analytics to compliment and leverage his understanding of mechanical applications and development as well as acquire tools to efficiently tackle large data. </p>
-                </div>
-            </div>
-        </div>
-
-        <div class="col-md-2">
-            <div class="card">
-                <img class="card-img-top" src="img/cat.jpg" alt="Great Picture" height="150" width="150">
-                <div class="card-body">
-                    <h4 class="card-title"></h4> Nana</h4>
-                    <br></br>
-                    <p class="card-text">BLAH BLAH BLAH BLAH BLAH</p>
-                </div>
-            </div>
-        </div>
-
-        <div class="col-md-2">
+        <div class="row padding">
+            <div class="col-md-2">
                 <div class="card">
-                    <img class="card-img-top" src="img/cat.jpg" alt="Great Picture" height="150" width="150">
+                    <img class="card-img-top" src="img/sue.jpg" alt="Great Picture" height="150" width="150">
                     <div class="card-body">
-                        <h4 class="card-title"></h4> Sonya</h4>
+                        <h4 class="card-title"></h4> Sue Helen</h4>
                         <br></br>
-                        <p class="card-text">BLAH BLAH BLAH BLAH BLAH</p>
+                        <p class="card-text">Sue is an IT professional with solid data analytics skills and extensive teamwork experience as Business Analytics Consultant
+                        and Project Manager. With more than 8 years of working experience in projects of Data Warehousing, Data Governance, Data Quality and everything 
+                        related to get the highest value from client’s information, she also has broad experience on methods and tools for Agile Project Management based 
+                        on best- practices of PMI-PMBOK and Scrum methodologies.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-2">
+                <div class="card">
+                        <img class="card-img-top" src="img/bolt.jpeg" alt="Great Picture" height="150" width="150">
+                        <!--a href='https://photos.google.com/share/AF1QipP8Lpvs8RGWVPmL4qBiOfsWFjVkKyfcKS2D1BvlExjHBBpGfqHZQhGOtlPgkR8FCg?key=eXpXMFJ1V1htTmR2YnVlNzFfZTlfcDJlQ3JEOW13&source=ctrlq.org'><img src='https://lh3.googleusercontent.com/GhCu4TNocb_ZfPnRRihkDQ4aNppSJ4AWyO4feoT-AefRXk7c3lcRBiHNI1qDuX7iTAkSJth_JUpu2iNExxnLkQG-2RKYWgjpUEvDTkJYrViAEqV3VWRohJxOlR1q_nqd246TZOOjJA=w2400' width="85" height="50"/></a-->
+                          <div class="card-body">
+                        <h4 class="card-title"></h4> Christopher Newbolt </h4>
+                        <br></br>
+                        <p class="card-text">Currently a lead for the Boeing R&D division, Chris specializes in mechanical parts and assemblies. He is 
+                        currently improving his understanding of data analytics to compliment and leverage his understanding of mechanical applications 
+                        and development as well as acquire tools to efficiently tackle large data. </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-2">
+                <div class="card">
+                    <img class="card-img-top" src="img/nana.jpg" alt="Great Picture" height="150" width="150">
+                    <div class="card-body">
+                        <h4 class="card-title"></h4> Nana Liang</h4>
+                        <br></br>
+                        <p class="card-text">Currently a tax senior consultant in PricewaterhouseCooper, 
+                        specialized in R&D tax credit and Transaction Cost Analysis. Recently, Nana was 
+                        selected as a digital accelerator, who will assist the firm to digitalize the work process and 
+                        revolutionize the accounting industry by incorporating new technology and software solution.  </p>
                     </div>
                 </div>
             </div>
 
             <div class="col-md-2">
                     <div class="card">
-                        <img class="card-img-top" src="img/cat.jpg" alt="Great Picture" height="150" width="150">
+                        <img class="card-img-top" src="img/sonia.jpg" alt="Great Picture" height="150" width="150">
                         <div class="card-body">
-                            <h4 class="card-title"></h4> Lindsay</h4>
+                            <h4 class="card-title"></h4> Sonia Yang</h4>
                             <br></br>
-                            <p class="card-text">BLAH BLAH BLAH BLAH BLAH</p>
+                            <p class="card-text">Passionate in analyzing data and informing data insight, Sonya worked in 
+                            various data related career. To further advance the career, she participated the USC Data 
+                            Analytics bootcamp and mastered various data analytics skills and coding languages (i.e. python, SQL, HTML, Javascripts, etc.).</p>
                         </div>
                     </div>
                 </div>
 
+                <div class="col-md-2">
+                        <div class="card">
+                            <img class="card-img-top" src="img/Lindsay_Photo.png" alt="Great Picture" height="150" width="150">
+                            <div class="card-body">
+                                <h4 class="card-title"></h4> Lindsay Yan</h4>
+                                <br></br>
+                                <p class="card-text">With strong data analytics skills and proficient in various coding language (Python, SQL, R, VBA, etc.),
+                                Lindsay is current a DMP and Data Analyst for a media company. As part of her expertise, Lindsay leverage python/SQL to build 
+                                predictive models to identify highest propensity viewers of shows for targeting.</p>
+                            </div>
+                        </div>
+                    </div>
+
 <script src="https://code.jquery.com/jquery-3.2.1.js" integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=" crossorigin="anonymous"></script>
 
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
-crossorigin="anonymous">
-</script>
+    crossorigin="anonymous">
+    </script>
 
+<!--- Footer -->
+<footer>
+<div class="container-fluid padding">
+    <div class="row text-center">
+        <div class="col-md-12">
+            <hr class="light">
+            <h2> &copy; 2018</h2>
+            </hr>
+            </div>
+        </div>
+    </div>
+</footer>
 
-
-
-
+<hr>
 </body>
 
 </html>

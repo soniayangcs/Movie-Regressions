@@ -5,41 +5,64 @@
   background-color: black;
   font-family:Impact, Charcoal, sans-serif;
 }
+.navbar-expand-md {
+  background-color: black;
+  font-family:Impact, Charcoal, sans-serif;
 
-
-.navbar-default .navbar-brand {
+}
+/*
+.navbar-brand {
   color: rgb(221, 85, 12);
   font-size: 3em;
   font-weight: 300;
 width: 600px;
+text-align:left;
+}
+*/
+
+.navbar-default .navbar-brand {
+  color: rgb(221, 85, 12);
+  font-size: 2.5em;
+  font-weight: 300;
+width: 600px;
+margin-bottom: 20px
 }
 
 .navbar-header {
   width: 400px;
-  margin-left: 75px !important;
+ /* margin-left: 75px !important;*/
 }
 
 li {
-  border-right: 1px solid #bbb;
+/*  border-right: 1px solid #bbb;*/
 }
 
 li:last-child {
   border-right: none;
 }
 
+.sign {
+  color: rgb(221, 85, 12);
+  text-align: left;
+  Margin-right:1.2em;
+
+}
+
 .sigline {
   color: rgb(221, 85, 12);
-  text-align: right;
+  text-align: left;
   
 }
 .navbar-header .navbar-toggle .collapsed {
-  float: right;
+  float: left;
 }
 
 .content {
   margin-top: 105px;
 }
-
+.body{
+  font-family:Impact, Charcoal, sans-serif;
+}
 h1 {
   font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
   font-size: 28px;
@@ -74,12 +97,20 @@ h5 {
   
 }
 
+.imgGoesHere {
+  width: 100%;
+  max-width: 400px;
+margin-left: 8em;
+}
 .box {
   color: black;
   background: #f1f1f1;
   
 }
+.sumlist {
+  font-size:1.2em;
 
+}
 .box-left {
   padding: 20px;
 }
