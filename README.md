@@ -12,7 +12,7 @@ Project 3: Movie regression models to predict the effects of different attribute
 * [Kaggle DataSet](https://www.kaggle.com/tmdb/tmdb-movie-metadata#tmdb_5000_movies.csv/) - Movie
 
 ## Running Flask and Heroku Deployment
-* To create an interactive experience for the client, we deployed both [Profitability Prediction Class model](https://meowmovie5000meow.herokuapp.com/predicte) and [NLP Model](https://meowmovie5000meow.herokuapp.com/predicte).
+* To create an interactive experience for the client, we deployed both [Profitability Prediction Class model](https://meowmovie5000meow.herokuapp.com/predicte) and [NLP Model](https://meowmovie5000meow.herokuapp.com/predicto).
 
 ### Running Flask
 * To run Flask successfully, we need to:
