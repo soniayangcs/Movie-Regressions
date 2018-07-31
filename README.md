@@ -3,8 +3,8 @@ Project 3: Movie regression models to predict the effects of different attribute
 
 ## Members
 * Chris 
-* Sue
-* Helen
+* Sue Helen
+* Lindsay
 * Nana
 * Sonia
 
