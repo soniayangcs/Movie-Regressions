@@ -1,5 +1,5 @@
-# Project-3.-Movie-Regressions
-Project 3: Movie regression models to predict the effects of different attributes on box performances and verification that descriptor can be used as a predictor of movie performance.
+# Movie Regressions
+Using regression models to predict the effects of different attributes on box office performances and verification that descriptor can be used as a predictor of movie performance.
 
 ## Members
 * Chris 
